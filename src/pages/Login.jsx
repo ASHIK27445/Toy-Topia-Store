@@ -12,22 +12,30 @@ const Login = () => {
         console.log(email, password)
         if(!user){
             loginUser(email, password)
-                .then(res => console.log(res.user))
+                .then(res => {
+                  console.log(res.user)
+                })
                 .catch(e=> console.log(e.message)) 
         }
         else{
             toast('user is alredy logged in')
         }
     }
+
     const handleGoogleISignIn = () => {
-      signInWithGoogle()
-        .then((result)=>{
-          console.log(result.user)
-        })
-        .catch((error)=>{
-          console.log(error)
-        })
+      if(!user){
+        signInWithGoogle()
+          .then((result)=>{
+            console.log(result.user)
+          })
+          .catch((error)=>{
+            console.log(error)
+          })
+       }else{
+      toast("User Already Logged IN!")
+      }
     }
+    
   return (
     <div className="w-11/12 mx-auto">
       <div className="hero bg-base-200 min-h-screen rounded-2xl">
