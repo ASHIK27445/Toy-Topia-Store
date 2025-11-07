@@ -58,8 +58,8 @@ const Navbar = () => {
             <div
             tabIndex={0}
             role="button"
-            className={`btn btn-ghost btn-circle avatar ${user ? ' tooltip tooltip-open tooltip-left' : ''}`}
-            data-tip={` ${user ? user.displayName : ''}`}
+            className={`btn btn-ghost btn-circle avatar ${user ? 'hover:tooltip hover:tooltip-open hover:tooltip-left' : ''}`}
+            data-tip={`${user ? user.displayName : ''}`}
             >
                 <div className="w-10 rounded-full" >
                     <img

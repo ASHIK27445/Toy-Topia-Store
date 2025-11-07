@@ -11,6 +11,9 @@ const Home = () => {
             <section>
                 <HeroSection></HeroSection>
             </section>
+            <section className="w-11/12 mx-auto my-40">
+                <ImageSilder toysData={toysData}></ImageSilder>
+            </section>
             <h2 className="text-center text-3xl font-bold mt-15 mb-5">Top picks for your little ones.</h2>
             <TopToys toysData={toysData}></TopToys>
             <div className="flex justify-center my-5">
