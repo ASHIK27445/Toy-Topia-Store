@@ -5,6 +5,7 @@ import AllToys from "../pages/AllToys";
 import ToyDetails from "../pages/ToyDetails";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import PrivateRoute from "../pages/private/PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'toyDetails/:toyID',
-                Component: ToyDetails
+                element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>
             },
             {
                 path: '/register',
