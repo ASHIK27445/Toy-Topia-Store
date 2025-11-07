@@ -16,6 +16,12 @@ const ToyDetails = () => {
                 setToy(foundToy)
             })
     }, [toyID])
+
+    const handleTryNow = (e) => {
+        e.preventDefault()
+        const name = e.target.name.value
+        const email = e.target.email.value
+    }
     return(
         <div className="w-11/12 p-5 shadow-2xl shadow-gray-700 rounded-2xl mx-auto my-10 grid grid-cols-2 gap-5 py-10">
             <div>
@@ -46,7 +52,19 @@ const ToyDetails = () => {
                     </div>
                 </div>
             </div>
-            <div className="row-span-1 mt-10">
+            <div className="flex justify-center items-center flex-col">
+                <h2>Try This Toy Now!</h2>
+                <form className="p-4">
+                    <fieldset className="fieldset border p-6">
+                        <label className="label text-blue-800 font-semibold">Name</label>
+                        <input type="text" className="input input-ghost border-b-blue-800 mb-2" placeholder="Name" name="name" required />
+                        <label className="label text-blue-800 font-semibold">Email</label>
+                        <input type="email" className="input input-ghost border-b-blue-800 mb-2" placeholder="Email" name='email' required />
+                        <button className="btn btn-neutral mt-4 mb-4">Try Now</button>
+                    </fieldset>
+                </form>
+            </div>
+            <div className="mt-10">
                 <h2 className="text-3xl font-baina font-semibold border-b pl-1">More Details Information</h2>
                 <div>
                     <h3 className="font-inter font-semibold my-2">#Seller Information</h3>
