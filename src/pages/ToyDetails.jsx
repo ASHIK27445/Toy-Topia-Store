@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import { FaStarHalfStroke } from "react-icons/fa6"
 import { useParams } from "react-router"
 import { BiSolidCategory } from "react-icons/bi"
 import { MdProductionQuantityLimits } from "react-icons/md"
 import { CgProfile } from "react-icons/cg"
+import { AuthContext } from "../context/AuthContext"
+import { toast } from "react-toastify"
 const ToyDetails = () => {
     const {toyID} = useParams()
     const [toy, setToy] = useState(null)
-
+    const {user} = use(AuthContext)
     useEffect(()=>{
         fetch("/toy.json")
             .then(res => res.json())
@@ -21,6 +23,12 @@ const ToyDetails = () => {
         e.preventDefault()
         const name = e.target.name.value
         const email = e.target.email.value
+        toast(`Thank ${name}! You’ve successfully tried this toy.`)
+        // if(!(user.email === email)){
+        //     toast("Email not matched, enter correct email")
+        // }else{
+        //     toast(`Thank ${name}! You’ve successfully tried this toy.`)
+        // }
     }
     return(
         <div className="w-11/12 p-5 shadow-2xl shadow-gray-700 rounded-2xl mx-auto my-10 grid grid-cols-2 gap-5 py-10">
@@ -54,7 +62,7 @@ const ToyDetails = () => {
             </div>
             <div className="flex justify-center items-center flex-col">
                 <h2>Try This Toy Now!</h2>
-                <form className="p-4">
+                <form className="p-4" onSubmit={handleTryNow}>
                     <fieldset className="fieldset border p-6">
                         <label className="label text-blue-800 font-semibold">Name</label>
                         <input type="text" className="input input-ghost border-b-blue-800 mb-2" placeholder="Name" name="name" required />
