@@ -10,14 +10,17 @@ const HeroSection = () => {
             className="w-full h-full object-contain rounded-3xl "
             />
         </div>
-        <div>
-            <h2 className='font-baina text-4xl md:text-5xl lg:text-6xl text-[#1096B5] font-bold'>
+        <div className='text-center md:text-left'>
+            <h2 className='font-baina text-4xl md:text-5xl lg:text-[52px] text-[#1096B5] font-bold'>
                 Play, learn, & grow!
             </h2>
             <p className='font-comfortaa text-[#375259] font-bold textarea-md mb-2'>
-                Crafting smiles with every toy, made for learning, fun, and growth
+                Crafting smiles with every toy, <br className='md:hidden' /> made for learning, fun, and growth
             </p>
-            <button className='btn bg-[#fdd695] rounded-3xl ml-2'>SHoP NOw</button>
+            <div className='flex justify-center lg:justify-normal'>
+                <button className='btn bg-[#fdd695] rounded-3xl ml-2'>Shop Now</button>
+            </div>
+            
         </div>
     </div>
   )
