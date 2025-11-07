@@ -25,11 +25,14 @@ const AuthProvider = ({children}) => {
     }
     useEffect(()=> {
         const unsubscribe = onAuthStateChanged(auth, (user)=>{
+            setTimeout(()=>{
+                
+                setLoading(false)
+            }, 2000)
             setUser(user)
-            setLoading(false)
         })
 
-        return () => unsubscribe()
+        return () => unsubscribe();
     }, [])
     const googleProvider = new GoogleAuthProvider()
     const signInWithGoogle = () => {

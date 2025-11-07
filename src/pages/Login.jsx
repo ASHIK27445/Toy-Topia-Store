@@ -17,7 +17,7 @@ const Login = () => {
                 .then(res => {
                   console.log(res.user)
                   e.target.reset()
-                  navigate(location.state ? `${location.state}` : '/')
+                  navigate(location?.state ? `${location?.state}` : '/')
                 })
                 .catch(e=> console.log(e.message)) 
         }
