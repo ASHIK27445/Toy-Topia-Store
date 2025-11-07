@@ -2,9 +2,9 @@ import { use } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { NavLink } from 'react-router';
-const Register = () => {
+const Login = () => {
     const {createUserEP, profileUpdate} = use(AuthContext)
-    const handleRegister = (e) =>{
+    const handleLogin = (e) =>{
         e.preventDefault()
         
         const name = e.target.name.value
@@ -30,8 +30,8 @@ const Register = () => {
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl ">
             <div className="card-body border border-dotted px-16 rounded-2xl">
-              <h1 className="text-4xl font-bold mt-4">Register now!</h1>
-                <form onSubmit={handleRegister}>
+              <h1 className="text-4xl font-bold mt-4">Login now!</h1>
+                <form onSubmit={handleLogin}>
                     <fieldset className="fieldset">
                         <label className="label text-blue-800 font-semibold">Name</label>
                         <input type="text" className="input input-ghost border-b-blue-800 mb-2" placeholder="Name" name="name" required />
@@ -60,4 +60,4 @@ const Register = () => {
     </div>
   );
 };
-export default Register;
+export default Login;

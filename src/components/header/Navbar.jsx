@@ -3,7 +3,7 @@ import logo from '../../assets/logo.png'
 const Navbar = () => {
     const links = <>
          <li><NavLink to="/" className={({isActive}) => isActive ? "font-bold pr-5 underline" : "text-black pr-5"}>Home</NavLink></li>
-        <li><NavLink  className={({isActive}) => isActive ? "font-bold pr-5" : "text-black pr-5"}>Login</NavLink></li>
+        <li><NavLink to='/login'  className={({isActive}) => isActive ? "font-bold pr-5" : "text-black pr-5"}>Login</NavLink></li>
         <li><NavLink to="/register" className={({isActive}) => isActive ? "font-bold pr-5 underline" : "text-black pr-5"}>Registration</NavLink></li>
     </>
   return (
