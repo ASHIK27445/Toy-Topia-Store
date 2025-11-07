@@ -6,6 +6,7 @@ import { toast } from "react-toastify"
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
     const createUserEP = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
@@ -25,6 +26,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=> {
         const unsubscribe = onAuthStateChanged(auth, (user)=>{
             setUser(user)
+            setLoading(false)
         })
 
         return () => unsubscribe()
@@ -39,7 +41,8 @@ const AuthProvider = ({children}) => {
         loginUser,
         user,
         logoutUser,
-        signInWithGoogle
+        signInWithGoogle,
+        loading
     }
     return(
         <AuthContext value={authInfo}>
