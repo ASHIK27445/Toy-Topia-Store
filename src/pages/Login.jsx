@@ -1,9 +1,11 @@
 import { use } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 const Login = () => {
     const {loginUser, user, signInWithGoogle} = use(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
     const handleLogin = (e) =>{
         e.preventDefault()
         
@@ -14,6 +16,8 @@ const Login = () => {
             loginUser(email, password)
                 .then(res => {
                   console.log(res.user)
+                  e.target.reset()
+                  navigate(location.state ? `${location.state}` : '/')
                 })
                 .catch(e=> console.log(e.message)) 
         }
