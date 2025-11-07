@@ -1,9 +1,18 @@
 import { NavLink } from "react-router";
+import { AuthContext } from '../../context/AuthContext'
 import logo from '../../assets/logo.png'
+import { use } from "react";
+import { toast } from "react-toastify";
 const Navbar = () => {
+    const {user, logoutUser} = use(AuthContext)
+    const handleLogout = () => {
+        logoutUser()
+            .then(()=> toast("logout Successful"))
+            .catch((error)=> console.log(error.massage))
+    }
     const links = <>
          <li><NavLink to="/" className={({isActive}) => isActive ? "font-bold pr-5 underline" : "text-black pr-5"}>Home</NavLink></li>
-        <li><NavLink to='/login'  className={({isActive}) => isActive ? "font-bold pr-5" : "text-black pr-5"}>Login</NavLink></li>
+        <li><NavLink to='/login'  className={({isActive}) => isActive ? "font-bold pr-5 underline" : "text-black pr-5"}>Login</NavLink></li>
         <li><NavLink to="/register" className={({isActive}) => isActive ? "font-bold pr-5 underline" : "text-black pr-5"}>Registration</NavLink></li>
     </>
   return (
@@ -48,14 +57,15 @@ const Navbar = () => {
             <div
             tabIndex={0}
             role="button"
-            className="btn btn-ghost btn-circle avatar"
+            className={`btn btn-ghost btn-circle avatar ${user ? ' tooltip tooltip-open tooltip-left' : ''}`}
+            data-tip={` ${user ? user.displayName : ''}`}
             >
-            <div className="w-10 rounded-full">
-                <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                />
-            </div>
+                <div className="w-10 rounded-full" >
+                    <img
+                    alt="Tailwind CSS Navbar component"
+                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    />
+                </div>
             </div>
             <ul
             tabIndex="-1"
@@ -67,11 +77,11 @@ const Navbar = () => {
                 <span className="badge">New</span>
                 </a>
             </li>
-            <li>
-                <a>Settings</a>
-            </li>
-            <li>
-                <a>Logout</a>
+            <li>{ user ?
+                    <a onClick={handleLogout}>Logout</a>:
+                    <NavLink to='/login'>Login</NavLink>
+                }
+                
             </li>
             </ul>
         </div>

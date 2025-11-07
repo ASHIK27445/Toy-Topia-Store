@@ -3,16 +3,22 @@ import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { NavLink } from 'react-router';
 const Login = () => {
-    const {loginUser} = use(AuthContext)
+    const {loginUser, user} = use(AuthContext)
     const handleLogin = (e) =>{
         e.preventDefault()
         
         const email = e.target.email.value
         const password = e.target.password.value
         console.log(email, password)
-        loginUser(email, password)
-            .then(res => console.log(res.user))
-            .catch(e=> console.log(e.message))
+        if(!user){
+            loginUser(email, password)
+                .then(res => console.log(res.user))
+                .catch(e=> console.log(e.message)) 
+        }
+        else{
+            toast('user is alredy logged in')
+        }
+
 
     }
   return (
