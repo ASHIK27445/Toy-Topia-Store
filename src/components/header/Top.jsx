@@ -1,7 +1,15 @@
 import { NavLink } from "react-router";
 import top from "../../assets/top.png";
 import { FaTruckMoving } from "react-icons/fa6";
+import { use } from "react";
+import { AuthContext } from '../../context/AuthContext'
 const Top = () => {
+  const {user, logoutUser} = use(AuthContext)
+  const handleLogout = () => {
+      logoutUser()
+        .then(()=> toast("logout Successful"))
+        .catch((error)=> console.log(error.massage))
+    }
   return (
     <div
       className="h-[50px] w-full flex items-center border-x"
@@ -19,8 +27,9 @@ const Top = () => {
           <FaTruckMoving></FaTruckMoving>Free free shipping with over $150
         </h2>
         <div>
-            <NavLink className="ml-4">Login</NavLink>
-            <NavLink className="ml-4">Register</NavLink>
+          { user ? <span className="ml-4 cursor-pointer hover:underline hover:font-semibold" onClick={handleLogout}>Logout</span>:
+                    <NavLink to='/login' className="ml-4 hover:underline hover:font-semibold">Login</NavLink>
+          }
         </div>
       </div>
     </div>
