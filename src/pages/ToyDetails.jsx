@@ -6,6 +6,7 @@ import { MdProductionQuantityLimits } from "react-icons/md"
 import { CgProfile } from "react-icons/cg"
 import { AuthContext } from "../context/AuthContext"
 import { toast } from "react-toastify"
+import NotFoundPage from "./error/NotFoundPage"
 const ToyDetails = () => {
     const {toyID} = useParams()
     const [toy, setToy] = useState(null)
@@ -18,6 +19,10 @@ const ToyDetails = () => {
                 setToy(foundToy)
             })
     }, [toyID])
+    console.log(toy)
+    if(!toy){
+        return <NotFoundPage></NotFoundPage>
+    }
 
     const handleTryNow = (e) => {
         e.preventDefault()
