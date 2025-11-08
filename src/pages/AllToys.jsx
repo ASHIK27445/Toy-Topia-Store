@@ -1,6 +1,4 @@
 import { useLoaderData } from "react-router"
-import Navbar from "../components/header/Navbar"
-import Top from "../components/header/Top"
 import ToyCard from "../components/Toys/ToyCard"
 import { useMemo, useState } from "react"
 
