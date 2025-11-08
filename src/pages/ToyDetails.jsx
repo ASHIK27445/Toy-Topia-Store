@@ -10,6 +10,7 @@ import NotFoundPage from "./error/NotFoundPage"
 const ToyDetails = () => {
     const {toyID} = useParams()
     const [toy, setToy] = useState(null)
+    const [loadingSpin, setLaodingSpin] = useState(true)
     const {user} = use(AuthContext)
     useEffect(()=>{
         fetch("/toy.json")
@@ -17,9 +18,12 @@ const ToyDetails = () => {
             .then(data => {
                 const foundToy = data.find(t=> t.toyId == toyID)
                 setToy(foundToy)
+                setLaodingSpin(false)
             })
     }, [toyID])
-    console.log(toy)
+    if(!loadingSpin){
+        return
+    }
     if(!toy){
         return <NotFoundPage></NotFoundPage>
     }
