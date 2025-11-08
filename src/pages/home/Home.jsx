@@ -29,7 +29,7 @@ const Home = () => {
             </section>
             <h2 className="text-center text-xl md:text-2xl lg:text-3xl font-bold mt-15 mb-5">Top picks for your little ones.</h2>
             <TopToys toysData={toysData}></TopToys>
-            <div className="flex justify-center my-5">
+            <div className="flex justify-center mt-5 mb-15">
                 <NavLink to='/alltoys' className="btn border-2 border-black rounded-lg px-10">See All</NavLink>
             </div>
         </div>

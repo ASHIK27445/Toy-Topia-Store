@@ -6,6 +6,7 @@ import ToyDetails from "../pages/ToyDetails";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import PrivateRoute from "../pages/private/PrivateRoute";
+import ErrorPage from "../pages/error/ErrorPage";
 
 
 export const router = createBrowserRouter([
@@ -36,5 +37,8 @@ export const router = createBrowserRouter([
             }
         ]
     },
-
+    {
+        path: '*',
+        Component: ErrorPage
+    }
 ])

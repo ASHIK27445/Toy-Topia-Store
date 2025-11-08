@@ -18,7 +18,7 @@ const HomeLayout = () => {
                     <Outlet></Outlet>
                 </section>
             </main>
-            <footer className="mt-15">
+            <footer>
                 <Footer></Footer>
             </footer>
             <ToastContainer />
