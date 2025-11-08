@@ -1,8 +1,8 @@
 import { Outlet } from "react-router"
 import Navbar from "../../components/header/Navbar"
 import Top from "../../components/header/Top"
-import HeroSection from "../../components/HeroSection/HeroSection"
 import { ToastContainer } from "react-toastify"
+import Footer from "../../components/Footer/Footer"
 
 const HomeLayout = () => {
     return(
@@ -18,6 +18,9 @@ const HomeLayout = () => {
                     <Outlet></Outlet>
                 </section>
             </main>
+            <footer className="mt-15">
+                <Footer></Footer>
+            </footer>
             <ToastContainer />
         </div>
     )

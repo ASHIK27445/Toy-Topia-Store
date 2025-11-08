@@ -3,7 +3,6 @@ import ImageSilder from "../../components/ImageSlider"
 import TopToys from "../../components/TopToys"
 import HeroSection from "../../components/HeroSection/HeroSection"
 import { NavLink } from "react-router";
-import Footer from "../../components/Footer/Footer";
 const Home = () => {
     const toysData = useLoaderData()
     console.log(toysData)
@@ -33,9 +32,6 @@ const Home = () => {
             <div className="flex justify-center my-5">
                 <NavLink to='/alltoys' className="btn border-2 border-black rounded-lg px-10">See All</NavLink>
             </div>
-            <footer className="mt-15">
-                <Footer></Footer>
-            </footer>
         </div>
     )
 }
