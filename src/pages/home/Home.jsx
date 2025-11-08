@@ -3,6 +3,7 @@ import ImageSilder from "../../components/ImageSlider"
 import TopToys from "../../components/TopToys"
 import HeroSection from "../../components/HeroSection/HeroSection"
 import { NavLink } from "react-router";
+import Footer from "../../components/Footer/Footer";
 const Home = () => {
     const toysData = useLoaderData()
     console.log(toysData)
@@ -11,7 +12,7 @@ const Home = () => {
             <section className="w-11/12 mx-auto py-6 md:py-12 border-y border-y-gray-500 border-dotted">
                 <HeroSection></HeroSection>
             </section>
-            <section className="w-11/12 mx-auto mb-20 mt-5">
+            <section className="w-11/12 mx-auto mb-4 mt-5 border-b border-gray-500 border-dotted">
                 <div className="flex flex-col items-center mt-5 mb-10">
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mt-15 mb-5">Find the Perfect Toy</h2>
                     <div className="flex gap-4 text-center">
@@ -32,7 +33,9 @@ const Home = () => {
             <div className="flex justify-center my-5">
                 <NavLink to='/alltoys' className="btn border-2 border-black rounded-lg px-10">See All</NavLink>
             </div>
-            
+            <footer className="mt-15">
+                <Footer></Footer>
+            </footer>
         </div>
     )
 }

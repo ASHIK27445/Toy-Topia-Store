@@ -23,7 +23,7 @@ const ImageSilder = ({toysData}) => {
             }
             navigation={true}
             loop={true}
-            className="w-full mx-10 max-w-[850px] max-h-[500px] md:mx-5">
+            className="w-full mx-10 max-w-[850px] max-h-[500px] md:mx-5 mb-20">
             {
                 toysData
                     .slice(0,3)
