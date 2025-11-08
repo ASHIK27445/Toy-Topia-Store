@@ -21,7 +21,7 @@ const ToyDetails = () => {
                 setLaodingSpin(false)
             })
     }, [toyID])
-    if(!loadingSpin){
+    if(loadingSpin){
         return
     }
     if(!toy){
