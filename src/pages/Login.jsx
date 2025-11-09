@@ -16,10 +16,20 @@ const Login = () => {
             loginUser(email, password)
                 .then(res => {
                   console.log(res.user)
+                  toast.success(`Welcome back!`,{
+                    autoClose: 1200
+                  })
                   e.target.reset()
                   navigate(location?.state ? `${location?.state}` : '/')
                 })
-                .catch(e=> console.log(e.message)) 
+                .catch(e=> {
+                  console.log(e.message)
+                  if(e.code === 'auth/invalid-credential'){
+                    toast.error("Invalid email or password. Please try again.", {
+                      autoClose: 1500
+                    })
+                  }
+                }) 
         }
         else{
             toast('user is alredy logged in')
