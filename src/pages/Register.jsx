@@ -1,9 +1,29 @@
-import { use } from 'react';
+import { use, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { NavLink } from 'react-router';
 const Register = () => {
     const {createUserEP, profileUpdate} = use(AuthContext)
+    const [password, setPassword] = useState('')
+    const [passError, setPassError] = useState([])
+    const passwordVerification = (passWD)=>{
+        const newPassWordError = []
+        if(!/[A-Z]/.test(passWD)){
+            newPassWordError.push('Password Must have an Uppercase letter')
+        }
+        if(!/[a-z]/.test(passWD)){
+            newPassWordError.push('Password Must have an lowercaseletter')
+        }
+        if(passWD.length < 6){
+            newPassWordError.push('Lenth must be at least 6 character')
+        }
+
+        setPassError(newPassWordError)
+    }
+    const handlePasswordChange = (e) =>{
+        setPassword(e.target.value)
+        passwordVerification(e.target.value)
+    }
     const handleRegister = (e) =>{
         e.preventDefault()
         
@@ -15,14 +35,19 @@ const Register = () => {
         createUserEP(email, password)
             .then(res=> {
                 console.log(res.user)
+                e.target.reset()
                 profileUpdate(name, photoURL)
                     .then(()=> {})
                     .catch(error => console.log(error.mesaage))
                 toast("Create User Successfully!", {
                     autoClose: 1200
                 })
+                //reset everything
+                setPassword('')
+                setPassError([])
+                e.target.reset()
             })
-            .catch(e=> console.log(e.mesaage))
+            .catch(e=> toast.error(e.message))
     }
   return (
     <div className="w-11/12 mx-auto">
@@ -45,12 +70,26 @@ const Register = () => {
                         className="input input-ghost border-b-blue-800 mb-2"
                         placeholder="Password"
                         name='password'
+                        value={password}
+                        onChange={handlePasswordChange}
                         required
                         />
+                        { passError.length > 0 && (
+                          <div>
+                            {
+                              passError.map((error, index)=> <p key={index} className='text-red-700'>
+                                #{error}
+                              </p>)
+                            }
+                          </div>
+                        )}
+                        {
+                          passError === 0 && passError.length > 0 ? <div><p className='text-green-700 font-semibold'>*Password requirements met successfully!</p></div> : ''
+                        }
                         <div>Already have an account? 
                         <NavLink to="/login" className="link link-hover text-blue-700 font-semibold"> Login here!</NavLink>
                         </div>
-                        <button className="btn btn-neutral mt-4 mb-4">Login</button>
+                        <button className="btn btn-neutral mt-4 mb-4">Register</button>
                     </fieldset>
                 </form>  
             </div>

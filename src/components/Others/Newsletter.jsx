@@ -14,7 +14,7 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-8">
+    <div className="mb-20 mt-10 bg-white flex items-center justify-center p-8">
       <div className="max-w-2xl w-full text-center">
         <h1 className="text-4xl font-bold mb-4">Newsletter</h1>
         <p className="text-gray-600 mb-8">
