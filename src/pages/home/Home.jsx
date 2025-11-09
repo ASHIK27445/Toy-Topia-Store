@@ -3,6 +3,7 @@ import ImageSilder from "../../components/ImageSlider"
 import TopToys from "../../components/TopToys"
 import HeroSection from "../../components/HeroSection/HeroSection"
 import { NavLink } from "react-router";
+import Newsletter from "../../components/Others/Newsletter";
 const Home = () => {
     const toysData = useLoaderData()
     console.log(toysData)
@@ -31,6 +32,9 @@ const Home = () => {
             <TopToys toysData={toysData}></TopToys>
             <div className="flex justify-center mt-5 mb-15">
                 <NavLink to='/alltoys' className="btn border-2 border-black rounded-lg px-10">See All</NavLink>
+            </div>
+            <div>
+                <Newsletter></Newsletter>
             </div>
         </div>
     )
