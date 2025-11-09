@@ -1,9 +1,11 @@
-import { use } from 'react';
+import { use, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { NavLink, useLocation, useNavigate } from 'react-router';
+import { RotatingTriangles } from 'react-loader-spinner';
 const Login = () => {
     const {loginUser, user, signInWithGoogle} = use(AuthContext)
+    const [loginloading, setLoginloading] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
     const handleLogin = (e) =>{
@@ -13,14 +15,20 @@ const Login = () => {
         const password = e.target.password.value
         console.log(email, password)
         if(!user){
+          setLoginloading(true)
             loginUser(email, password)
                 .then(res => {
-                  console.log(res.user)
-                  toast.success(`Welcome back!`,{
-                    autoClose: 1200
-                  })
+                  setTimeout(()=>{
+                    setLoginloading(false)
+                    console.log(res.user)
+                    navigate(location?.state ? `${location?.state}` : '/')
+                    toast.success(`Welcome back!`,{
+                      autoClose: 1200
+                    })
+                  },3000)
+
                   e.target.reset()
-                  navigate(location?.state ? `${location?.state}` : '/')
+
                 })
                 .catch(e=> {
                   console.log(e.message)
@@ -49,6 +57,18 @@ const Login = () => {
       toast("User Already Logged IN!")
       }
     }
+
+    if(loginloading ){
+      return <div className="my-40 flex justify-center items-center"><RotatingTriangles
+                    visible={true}
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="rotating-triangles-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""/> 
+                </div>
+    } 
     
   return (
     <div className="w-11/12 mx-auto">

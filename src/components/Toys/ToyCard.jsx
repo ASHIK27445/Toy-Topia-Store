@@ -4,7 +4,7 @@ const ToyCard = ({toys}) => {
     const {toyName, price, rating, availableQuantity, subCategory, pictureURL, toyId} = toys
     return(
         <div className="shadow-2xl py-3 px-5 max-w-60 md:max-w-[270px] lg:max-w-[300px] rounded-2xl hover:shadow-blue-700 flex flex-col">
-            <div className="w-full max-w-[230px] md:max-w-[250px] lg:max-w-[280px] h-[200px] md:h-[215px] lg:h-[230px] mt-3">
+            <div className="w-full max-w-[230px] md:max-w-[250px] lg:max-w-[280px] h-[180px] md:h-[200px] lg:h-[220px] mt-3">
                 <img src={pictureURL} alt="" className="w-full h-full object-cover rounded-3xl"/>
             </div>
             <div className="font-inter mt-auto">
