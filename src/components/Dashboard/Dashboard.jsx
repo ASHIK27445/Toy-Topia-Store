@@ -62,9 +62,9 @@ const Dashboard = () => {
                 <div>
                     <ProfileCard
                         name={user.photoURL ? '' : 'No Photo'}
-                        title=''
+                        title={user.email}
                         handle={user.displayName} 
-                        status={user.email}
+                        status=''
                         contactText="Logout"
                         avatarUrl={user.photoURL || avatar}
                         showUserInfo={true}

@@ -6,6 +6,7 @@ import { RotatingTriangles } from 'react-loader-spinner';
 const Login = () => {
     const {loginUser, user, signInWithGoogle} = use(AuthContext)
     const [loginloading, setLoginloading] = useState(false)
+    const [email, setEmail] = useState('')
     const navigate = useNavigate()
     const location = useLocation()
     const handleLogin = (e) =>{
@@ -58,7 +59,9 @@ const Login = () => {
       toast("User Already Logged IN!")
       }
     }
-
+    const handleForgetPassword = () => {
+      navigate('/forgetPassword', {state: {email}})
+    }
     if(loginloading ){
       return <div className="my-40 flex justify-center items-center"><RotatingTriangles
                     visible={true}
@@ -81,7 +84,13 @@ const Login = () => {
                 <form onSubmit={handleLogin}>
                     <fieldset className="fieldset">
                         <label className="label text-blue-800 font-semibold">Email</label>
-                        <input type="email" className="input input-ghost border-b-blue-800 mb-2" placeholder="Email" name='email' required />
+                        <input type="email" 
+                        className="input input-ghost border-b-blue-800 mb-2" 
+                        placeholder="Email" 
+                        name='email' 
+                        value={email}
+                        onChange={(e)=> {setEmail(e.target.value)}}
+                        required />
                         <label className="label text-blue-800 font-semibold">Password</label>
                         <input
                         type="password"
@@ -93,7 +102,10 @@ const Login = () => {
                         <div>New user? 
                         <NavLink to="/register" className="link link-hover text-blue-700 font-semibold"> Register here!</NavLink>
                         </div>
-                        <button className="btn btn-neutral mt-4 mb-4">Login</button>
+                        <div>
+                           <p onClick={handleForgetPassword} className='hover:underline hover:text-blue-700 hover:cursor-pointer'>Forget Password?</p>
+                        </div>
+                        <button className="btn btn-neutral mt-2 mb-4">Login</button>
                     </fieldset>
                 </form>
                 <div className='mb-10'>

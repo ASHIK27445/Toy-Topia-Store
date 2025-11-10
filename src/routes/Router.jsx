@@ -8,7 +8,7 @@ import Login from "../pages/Login";
 import PrivateRoute from "../pages/private/PrivateRoute";
 import ErrorPage from "../pages/error/ErrorPage";
 import Dashboardh from "../components/Dashboard/Dashboard";
-
+import ForgetPassword from "../pages/other/ForgetPassword"
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +39,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <PrivateRoute><Dashboardh></Dashboardh></PrivateRoute>
+            },
+            {
+                path: '/forgetPassword',
+                Component: ForgetPassword
             }
         ]
     },
