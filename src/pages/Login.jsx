@@ -27,7 +27,7 @@ const Login = () => {
                     toast.success(`Welcome back!`,{
                       autoClose: 1200
                     })
-                  },3000)
+                  },2000)
 
                 })
                 .catch(e=> {
@@ -41,7 +41,9 @@ const Login = () => {
                 }) 
         }
         else{
-            toast('user is alredy logged in')
+            toast.error('user is alredy logged in',{
+              autoClose:1200
+            })
         }
     }
 

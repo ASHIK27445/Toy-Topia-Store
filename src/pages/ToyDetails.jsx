@@ -32,7 +32,7 @@ const ToyDetails = () => {
         e.preventDefault()
         const name = e.target.name.value
         const email = e.target.email.value
-        toast(`Thank ${name}! You’ve successfully tried this toy.`)
+        toast.success(`Thank ${name}! You’ve successfully tried this toy. Check Your ${email} now!`)
         // if(!(user.email === email)){
         //     toast("Email not matched, enter correct email")
         // }else{

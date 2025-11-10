@@ -3,11 +3,14 @@ import top from "../../assets/top.png";
 import { FaTruckMoving } from "react-icons/fa6";
 import { use } from "react";
 import { AuthContext } from '../../context/AuthContext'
+import { toast } from "react-toastify";
 const Top = () => {
   const {user, logoutUser} = use(AuthContext)
   const handleLogout = () => {
       logoutUser()
-        .then(()=> toast("logout Successful"))
+        .then(()=> toast.success("logout Successful",{
+          autoClose:1000
+        }))
         .catch((error)=> console.log(error.massage))
     }
   return (

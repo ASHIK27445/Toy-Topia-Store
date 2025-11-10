@@ -9,6 +9,8 @@ import PrivateRoute from "../pages/private/PrivateRoute";
 import ErrorPage from "../pages/error/ErrorPage";
 import Dashboardh from "../components/Dashboard/Dashboard";
 import ForgetPassword from "../pages/other/ForgetPassword"
+import TermandCondition from "../components/Others/TermandCondition";
+import Policy from "../components/Others/Policy";
 
 export const router = createBrowserRouter([
     {
@@ -43,6 +45,14 @@ export const router = createBrowserRouter([
             {
                 path: '/forgetPassword',
                 Component: ForgetPassword
+            },
+            {
+                path: '/terms',
+                Component: TermandCondition
+            },
+            {
+                path: '/policy',
+                Component: Policy
             }
         ]
     },

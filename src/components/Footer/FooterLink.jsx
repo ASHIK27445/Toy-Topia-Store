@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 import FooterSocial from "./FooterSocial"
 
 const footerList = 
@@ -27,8 +28,26 @@ const FooterLink = () => {
                         <ul className='p-0 m-0'>
                             <li className='flex flex-col gap-3'>
                                 {
-                                    list.submenu.map((sublist, subindex)=> <a className='hover:underline' key={subindex}>{sublist}</a>)
-                                }
+                                    list.submenu.map((sublist, subindex)=> {
+                                      if (sublist === "Terms & Conditions") {
+                                      return (
+                                          <Link
+                                            to="/terms"
+                                            className="hover:underline"
+                                            key={subindex}>
+                                            {sublist}
+                                          </Link>)
+                                    }else if (sublist === "Privacy Policy") {
+                                            return (
+                                              <Link to="/policy" className="hover:underline" key={subindex}>
+                                                {sublist}
+                                              </Link>
+                                            )
+                                    } else { 
+                                      return(
+                                      <a className='hover:underline' key={subindex}>{sublist}</a>
+                                    )}
+                                })}
                             </li>
                         </ul>
                     </div>)
