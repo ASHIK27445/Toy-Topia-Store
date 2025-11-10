@@ -54,38 +54,42 @@ const Dashboard = () => {
     }
     
     return (
-        <div className="flex justify-center items-center mt-10 gap-4 bg-blue-950 ">
-            <div>
-                <ProfileCard
-                    name={user.photoURL ? '' : 'No Photo'}
-                    title=''
-                    handle={user.displayName} 
-                    status={user.email}
-                    contactText="Logout"
-                    avatarUrl={user.photoURL || avatar}
-                    showUserInfo={true}
-                    enableTilt={true}
-                    iconUrl={avatar}
-                    enableMobileTilt={false}
-                    behindGlowEnabled={true}
-                    mobileTiltSensitivity={1}
-                    onContactClick='contact'
-                    className="scale-75"
-                />
-            </div>
-            <div className="bg-amber-100 px-10 py-17 rounded-2xl">
-                <form onSubmit={handleProfileUpdate}>
-                    <fieldset className="fieldset">
-                        <label className="label">PhotoURL</label>
-                        <input type="text" className="input row-span-3" placeholder={user.photoURL} name="photoURL" />
-                        <label className="label">Name</label>
-                        <input type="text" className="input" placeholder={user.displayName} name="name"/>
-                        <div><a className="link link-hover">Forgot password?</a></div>
-                        <button className="btn btn-neutral mt-4">Update</button>
-                    </fieldset>
-                </form>
+        <div className="bg-blue-950">
+            <h2 className="font-baina text-white text-3xl font-semibold text-center pt-22">User Profile Dashboard</h2>
+            <div className="flex flex-col md:flex-row justify-center items-center mt-4 gap-4 pb-18">
+                <div>
+                    <ProfileCard
+                        name={user.photoURL ? '' : 'No Photo'}
+                        title=''
+                        handle={user.displayName} 
+                        status={user.email}
+                        contactText="Logout"
+                        avatarUrl={user.photoURL || avatar}
+                        showUserInfo={true}
+                        enableTilt={true}
+                        iconUrl={avatar}
+                        enableMobileTilt={false}
+                        behindGlowEnabled={true}
+                        mobileTiltSensitivity={1}
+                        onContactClick='contact'
+                        className="scale-75"
+                    />
+                </div>
+                <div className="bg-amber-100 px-4 lg:px-10 py-12 lg:py-17 rounded-2xl">
+                    <form onSubmit={handleProfileUpdate}>
+                        <fieldset className="fieldset">
+                            <label className="label">PhotoURL</label>
+                            <input type="text" className="input row-span-3" placeholder={user.photoURL} name="photoURL" />
+                            <label className="label">Name</label>
+                            <input type="text" className="input" placeholder={user.displayName} name="name"/>
+                            <div><a className="link link-hover">Forgot password?</a></div>
+                            <button className="btn btn-neutral mt-4">Update</button>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
+        
     );
 };
 
