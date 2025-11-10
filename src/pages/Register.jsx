@@ -2,10 +2,13 @@ import { use, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { NavLink } from 'react-router';
+import { RotatingTriangles } from 'react-loader-spinner';
 const Register = () => {
+    const {user} = use(AuthContext)
     const {createUserEP, profileUpdate} = use(AuthContext)
     const [password, setPassword] = useState('')
     const [passError, setPassError] = useState([])
+    const [loading, setLoading] = useState(false)
     const passwordVerification = (passWD)=>{
         const newPassWordError = []
         if(!/[A-Z]/.test(passWD)){
@@ -32,13 +35,18 @@ const Register = () => {
         const email = e.target.email.value
         const password = e.target.password.value
         console.log(name, photoURL, email, password)
+        if(user){
+          toast.error("Logout first!")
+        }else{
+
+        setLoading(true)
         createUserEP(email, password)
             .then(res=> {
                 console.log(res.user)
-                e.target.reset()
-                profileUpdate(name, photoURL)
-                    .then(()=> {})
-                    .catch(error => console.log(error.mesaage))
+                return profileUpdate(name, photoURL)
+                          .catch(error => console.log(error.mesaage))
+            })
+            .then(()=> {
                 toast("Create User Successfully!", {
                     autoClose: 1200
                 })
@@ -46,8 +54,24 @@ const Register = () => {
                 setPassword('')
                 setPassError([])
                 e.target.reset()
+                setLoading(false)
+
             })
-            .catch(e=> toast.error(e.message))
+            .catch(e=> {
+              setLoading(false)
+              toast.error(e.message)
+            })}
+    }
+    if(loading){
+      return <div className="my-40 flex justify-center items-center"><RotatingTriangles
+                    visible={true}
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="rotating-triangles-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""/> 
+                </div>
     }
   return (
     <div className="w-11/12 mx-auto">

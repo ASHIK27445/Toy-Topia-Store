@@ -16,6 +16,7 @@ const AuthProvider = ({children}) => {
             photoURL: photoURL
         }
         return updateProfile(auth.currentUser, profile)
+                    .then(()=>{setUser({...auth.currentUser})})
     }
     const loginUser = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
