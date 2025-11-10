@@ -54,7 +54,9 @@ const Dashboard = () => {
     }
     
     return (
-        <div className="bg-blue-950">
+        <div className="bg-blue-950" style={{
+                background: 'linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%)'
+            }}>
             <h2 className="font-baina text-white text-3xl font-semibold text-center pt-22">User Profile Dashboard</h2>
             <div className="flex flex-col md:flex-row justify-center items-center mt-4 gap-4 pb-18">
                 <div>
