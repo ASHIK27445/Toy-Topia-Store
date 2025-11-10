@@ -1,9 +1,9 @@
 import { use, useState } from "react";
-import ProfileCard from "../../../../../Practise/firebase-auth/src/components/ProfileCard/ProfileCard";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import { RotatingTriangles } from "react-loader-spinner";
 import avatar from '../../assets/avatar.svg'
+import ProfileCard from "../ReactBlitz/ProfileCard";
 
 const Dashboard = () => {
     const {user, profileUpdate} = use(AuthContext)
@@ -62,9 +62,9 @@ const Dashboard = () => {
             <div className="flex flex-col md:flex-row justify-center items-center mt-4 gap-4 pb-18">
                 <div>
                     <ProfileCard
-                        name={user.photoURL ? '' : 'No Photo'}
-                        title={user.email}
-                        handle={user.displayName} 
+                        name={user?.photoURL ? '' : 'No Photo'}
+                        title={user?.email}
+                        handle={user?.displayName} 
                         status=''
                         contactText="Logout"
                         avatarUrl={user.photoURL || avatar}
