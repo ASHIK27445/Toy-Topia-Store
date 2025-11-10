@@ -32,6 +32,7 @@ const Login = () => {
                 })
                 .catch(e=> {
                   console.log(e.message)
+                  setLoginloading(false)
                   if(e.code === 'auth/invalid-credential'){
                     toast.error("Invalid email or password. Please try again.", {
                       autoClose: 1500
