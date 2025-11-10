@@ -82,6 +82,7 @@ const Register = () => {
     }
   return (
     <div className="w-11/12 mx-auto">
+      <title>Toy Topia Store - Register</title>
       <div className="hero bg-base-200 min-h-screen rounded-2xl">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl ">

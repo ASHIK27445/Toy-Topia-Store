@@ -41,6 +41,7 @@ const ToyDetails = () => {
     }
     return(
         <div className="w-11/12 p-5 shadow-2xl shadow-gray-700 rounded-2xl mx-auto my-10 grid grid-cols-2 gap-5 py-10">
+            <title>{`Toy Topia Store - #ID:${toy?.toyId}`}</title>
             <div>
                 <div className="relative">
                     <img src={toy?.pictureURL} className="w-full h-full object-contain rounded-2xl"/>

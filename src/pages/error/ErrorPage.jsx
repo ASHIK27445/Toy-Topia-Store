@@ -7,6 +7,7 @@ const ErrorPage = () => {
     const hoverIntensity = 0.5
   return (
     <div>
+        <title>Error 404</title>
         <header>
             <Top></Top>
             <nav>

@@ -24,6 +24,7 @@ const AllToys = () => {
 
     return(
         <div className="w-11/12 mx-auto mt-16">
+            <title>Toy Topia Store - All Product</title>
             <main className="flex flex-col md:flex-row justify-center gap-10">
                 <div>
                     <div className="border border-gray-900 border-dashed rounded-2xl px-2 py-2.5 sticky top-4">
