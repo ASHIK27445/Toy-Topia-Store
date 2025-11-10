@@ -37,7 +37,6 @@ const Register = () => {
         const photoURL = e.target.photoURL.value
         const email = e.target.email.value
         const password = e.target.password.value
-        console.log(name, photoURL, email, password)
         if(user){
           toast.error("Logout first!")
         }else{
@@ -45,9 +44,8 @@ const Register = () => {
         setLoading(true)
         createUserEP(email, password)
             .then(res=> {
-                console.log(res.user)
                 return profileUpdate(name, photoURL)
-                          .catch(error => console.log(error.mesaage))
+                          .catch(error => toast.error(error.mesaage))
             })
             .then(()=> {
                 toast("Create User Successfully!", {

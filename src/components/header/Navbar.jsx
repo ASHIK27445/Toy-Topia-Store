@@ -8,7 +8,7 @@ const Navbar = () => {
     const handleLogout = () => {
         logoutUser()
             .then(()=> toast("logout Successful"))
-            .catch((error)=> console.log(error.massage))
+            .catch((error)=> toast.error(error.massage))
     }
     const links = <>
          <li><NavLink to="/" className={({isActive}) => isActive ? "font-bold pr-5 underline" : "text-black pr-5"}>Home</NavLink></li>

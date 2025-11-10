@@ -6,7 +6,6 @@ import { RotatingTriangles } from "react-loader-spinner"
 const PrivateRoute = ({children}) => {
     const {user, loading} = use(AuthContext)
     const location = useLocation()
-    console.log(location)
     if(loading){
         return <div className="my-40 flex justify-center items-center"><RotatingTriangles
                     visible={true}

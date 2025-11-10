@@ -14,7 +14,6 @@ const Login = () => {
         
         const email = e.target.email.value
         const password = e.target.password.value
-        console.log(email, password)
         if(!user){
           setLoginloading(true)
             loginUser(email, password)
@@ -22,7 +21,6 @@ const Login = () => {
                   e.target.reset()
                   setTimeout(()=>{
                     setLoginloading(false)
-                    console.log(res.user)
                     navigate(location?.state ? `${location?.state}` : '/')
                     toast.success(`Welcome back!`,{
                       autoClose: 1200
@@ -31,7 +29,6 @@ const Login = () => {
 
                 })
                 .catch(e=> {
-                  console.log(e.message)
                   setLoginloading(false)
                   if(e.code === 'auth/invalid-credential'){
                     toast.error("Invalid email or password. Please try again.", {
@@ -51,10 +48,10 @@ const Login = () => {
       if(!user){
         signInWithGoogle()
           .then((result)=>{
-            console.log(result.user)
+            toast.success("Welcome back")
           })
           .catch((error)=>{
-            console.log(error)
+            toast.error(error.message)
           })
        }else{
       toast("User Already Logged IN!")

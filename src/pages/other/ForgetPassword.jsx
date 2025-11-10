@@ -9,7 +9,6 @@ const ForgetPassword = () => {
     const navigate = useNavigate()
     const emailFromLogin = location.state?.email || ''
     const [email, setEmail] = useState(user ? user?.email : emailFromLogin)
-    console.log(emailFromLogin)
     const handleResetPassword = (e) =>{
         e.preventDefault()
         resetPassword(email)

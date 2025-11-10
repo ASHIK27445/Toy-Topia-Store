@@ -11,7 +11,7 @@ const Top = () => {
         .then(()=> toast.success("logout Successful",{
           autoClose:1000
         }))
-        .catch((error)=> console.log(error.massage))
+        .catch((error)=> toast.error(error.massage))
     }
   return (
     <div

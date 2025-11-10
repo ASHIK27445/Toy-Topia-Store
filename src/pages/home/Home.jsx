@@ -6,7 +6,6 @@ import { NavLink } from "react-router";
 import Newsletter from "../../components/Others/Newsletter";
 const Home = () => {
     const toysData = useLoaderData()
-    console.log(toysData)
     return(
         <div>
             <section className="w-11/12 mx-auto py-6 md:py-12 border-y border-y-gray-500 border-dotted">
