@@ -3,12 +3,14 @@ import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { NavLink, useNavigate} from 'react-router';
 import { RotatingTriangles } from 'react-loader-spinner';
+import { GoEye, GoEyeClosed } from "react-icons/go";
 const Register = () => {
     const {user, logoutUser} = use(AuthContext)
     const {createUserEP, profileUpdate} = use(AuthContext)
     const [password, setPassword] = useState('')
     const [passError, setPassError] = useState([])
     const [loading, setLoading] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
     const passwordVerification = (passWD)=>{
         const newPassWordError = []
@@ -75,6 +77,9 @@ const Register = () => {
                     wrapperClass=""/> 
                 </div>
     }
+    const handleShowPassword = () =>{
+      setShowPassword(!showPassword)
+    }
   return (
     <div className="w-11/12 mx-auto">
       <div className="hero bg-base-200 min-h-screen rounded-2xl">
@@ -91,15 +96,25 @@ const Register = () => {
                         <label className="label text-blue-800 font-semibold">Email</label>
                         <input type="email" className="input input-ghost border-b-blue-800 mb-2" placeholder="Email" name='email' required />
                         <label className="label text-blue-800 font-semibold">Password</label>
-                        <input
-                        type="password"
-                        className="input input-ghost border-b-blue-800 mb-2"
-                        placeholder="Password"
-                        name='password'
-                        value={password}
-                        onChange={handlePasswordChange}
-                        required
-                        />
+                        <div className="relative">
+                            <input
+                            type={showPassword ? 'text' : 'password'}
+                            className="input input-ghost border-b-blue-800 mb-2"
+                            placeholder="Password"
+                            name='password'
+                            value={password}
+                            onChange={handlePasswordChange}
+                            required
+                            />
+                            {
+                              <button type="button" className="absolute btn right-0 bg-transparent hover:border-none h-9 hover:shadow-none" onClick={handleShowPassword}>
+                                {
+                                  showPassword ?   <GoEyeClosed></GoEyeClosed> : <GoEye color='red'></GoEye>
+                                }
+                              </button>
+                            }
+                        </div>
+
                         { passError.length > 0 && (
                           <div>
                             {
