@@ -23,12 +23,12 @@ const ImageSilder = ({toysData}) => {
             }
             navigation={true}
             loop={true}
-            className="w-full mx-10 max-w-[850px] max-h-[500px] md:mx-5 mb-20">
+            className="w-full mx-10 max-w-[850px] max-h-[600px] md:mx-5 mb-20">
             {
                 toysData
                     .slice(0,3)
                     .map(toy=> <SwiperSlide key={toy.toyId}>
-                        <img src={toy.pictureURL} className="w-full h-full rounded-lg" />
+                        <img src={toy.pictureURL} className="w-full h-[500px] object-contain rounded-lg" />
                     </SwiperSlide>)
             }         
         </Swiper>

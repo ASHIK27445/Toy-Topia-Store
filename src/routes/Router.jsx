@@ -11,6 +11,8 @@ import Dashboardh from "../components/Dashboard/Dashboard";
 import ForgetPassword from "../pages/other/ForgetPassword"
 import TermandCondition from "../components/Others/TermandCondition";
 import Policy from "../components/Others/Policy";
+import NotFoundPage from "../pages/error/NotFoundPage";
+import { RotatingSquare } from "react-loader-spinner";
 
 export const router = createBrowserRouter([
     {
@@ -19,12 +21,32 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true, Component: Home, 
-                loader: () => fetch('/toy.json')
+                loader: () => fetch('/toy.json'),
+                hydrateFallbackElement: <div className="my-40 flex justify-center items-center">
+                    <RotatingSquare
+                    visible={true}
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="rotating-triangles-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""/> 
+                </div>
             },
             {
                 path:'/alltoys',
                 Component: AllToys,
-                loader: () => fetch('/toy.json')
+                loader: () => fetch('/toy.json'),
+                hydrateFallbackElement: <div className="my-40 flex justify-center items-center">
+                    <RotatingSquare
+                    visible={true}
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="rotating-triangles-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""/> 
+                </div>
             },
             {
                 path: 'toyDetails/:toyID',
@@ -53,7 +75,11 @@ export const router = createBrowserRouter([
             {
                 path: '/policy',
                 Component: Policy
-            }
+            },
+            // {
+            //     path: '*',
+            //     Component: NotFoundPage
+            // }
         ]
     },
     {

@@ -27,7 +27,7 @@ const AllToys = () => {
             <title>Toy Topia Store - All Product</title>
             <main className="flex flex-col md:flex-row justify-center gap-10">
                 <div>
-                    <div className="border border-gray-900 border-dashed rounded-2xl px-2 py-2.5 sticky top-4">
+                    <div className="border border-gray-900 border-dashed rounded-2xl px-2 py-2.5 sticky top-4 mb-10">
                         <h2 className="font-comfortaa font-extrabold text-lg">Product Categories</h2>
                         <p onClick={()=> handleSelectCategory(null)}
                             className={`py-1.5 cursor-pointer ${!selectedCategories? 'text-blue-700 font-semibold' : 'hover:text-blue-700 hover:font-semibold'}`}
