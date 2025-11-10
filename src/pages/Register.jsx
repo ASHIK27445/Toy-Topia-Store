@@ -1,14 +1,15 @@
-import { use, useState } from 'react';
+import { use, useState,  } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate} from 'react-router';
 import { RotatingTriangles } from 'react-loader-spinner';
 const Register = () => {
-    const {user} = use(AuthContext)
+    const {user, logoutUser} = use(AuthContext)
     const {createUserEP, profileUpdate} = use(AuthContext)
     const [password, setPassword] = useState('')
     const [passError, setPassError] = useState([])
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
     const passwordVerification = (passWD)=>{
         const newPassWordError = []
         if(!/[A-Z]/.test(passWD)){
@@ -55,7 +56,8 @@ const Register = () => {
                 setPassError([])
                 e.target.reset()
                 setLoading(false)
-
+                logoutUser()
+                navigate('/login')
             })
             .catch(e=> {
               setLoading(false)
