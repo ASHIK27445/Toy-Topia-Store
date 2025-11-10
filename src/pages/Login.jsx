@@ -19,6 +19,7 @@ const Login = () => {
           setLoginloading(true)
             loginUser(email, password)
                 .then(res => {
+                  e.target.reset()
                   setTimeout(()=>{
                     setLoginloading(false)
                     console.log(res.user)
@@ -27,8 +28,6 @@ const Login = () => {
                       autoClose: 1200
                     })
                   },3000)
-
-                  e.target.reset()
 
                 })
                 .catch(e=> {

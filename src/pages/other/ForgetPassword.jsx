@@ -1,21 +1,17 @@
-import { use } from "react"
+import { use, useState } from "react"
 import { NavLink, useLocation, useNavigate } from "react-router"
 import { AuthContext } from "../../context/AuthContext"
 import { toast } from "react-toastify"
 
 const ForgetPassword = () => {
+    const {user, resetPassword} = use(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
-    const {resetPassword} = use(AuthContext)
     const emailFromLogin = location.state?.email || ''
+    const [email, setEmail] = useState(user ? user?.email : emailFromLogin)
     console.log(emailFromLogin)
     const handleResetPassword = (e) =>{
         e.preventDefault()
-        const email = e.target.email.value
-                if (!email || !email.includes('@')) {
-            toast.error("Please enter a valid email address!");
-            return;
-        }
         resetPassword(email)
             .then(()=>{
                 toast.success("Check Your mail now")
@@ -43,6 +39,8 @@ const ForgetPassword = () => {
                         className="input input-ghost border-b-blue-800 mb-2" 
                         placeholder="Email" 
                         name='email' 
+                        value={email}
+                        onChange={(e)=> setEmail(e.target.value)}
                         required />
                         <div>New user? 
                         <NavLink to="/register" className="link link-hover text-blue-700 font-semibold"> Register here!</NavLink>
